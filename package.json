@@ -1,0 +1,17 @@
+{
+  "name": "single-use",
+  "version": "1.0.0",
+  "description": "Create single use urls",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nanoid": "^5.0.9",
+    "redis": "^4.6.4",
+    "valid-url": "^1.0.9"
+  }
+}
