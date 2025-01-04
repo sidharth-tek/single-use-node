@@ -24,10 +24,10 @@ router.post('/create', async (req, res) => {
         }
 
         const urlId = await getNanoId()
-        const redisAdd = await redisClient.set(urlId, url, {EX: 3600})
+        const redisAdd = await redisClient.set(urlId, url, { EX: 3600 })
         if (redisAdd === 'OK') {
             return res.json({
-                singleUseUrl: `http://localhost:3000/single-use/${urlId}`
+                singleUseUrl: `${process.env.SINGLE_USE_BASE_URL}${urlId}`
             });
         } else {
             return res.status(500).json({
@@ -45,7 +45,7 @@ router.post('/create', async (req, res) => {
 
 router.get('/:urlId', async (req, res) => {
     try {
-        const {urlId} = req.params ;
+        const { urlId } = req.params;
 
         if (!urlId) {
             return res.status(400).json({
